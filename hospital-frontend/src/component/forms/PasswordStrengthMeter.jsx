@@ -68,7 +68,7 @@ const PasswordStrengthMeter = ({ strength = 0, password = '' }) => {
                 <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
                     <div
                         className={cn(
-                            `h-full bg-linear-to-r ${config.color} transition-all duration-500`,
+                            `h-full bg-gradient-to-r ${config.color} transition-all duration-500`,
                             config.width,
                         )}
                     />
