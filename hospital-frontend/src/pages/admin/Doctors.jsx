@@ -325,7 +325,7 @@ const Doctors = ({ showNotification } = {}) => {
                       <button 
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex-[2] py-4 bg-primary text-white font-bold rounded-2xl shadow-lg shadow-primary/20 hover:translate-y-[-2px] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70"
+                        className="grow py-4 bg-primary text-white font-bold rounded-2xl shadow-lg shadow-primary/20 hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70"
                       >
                         {isSubmitting ? (
                           <Loader2 className="w-5 h-5 animate-spin" />

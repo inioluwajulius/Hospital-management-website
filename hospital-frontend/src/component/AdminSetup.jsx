@@ -54,7 +54,7 @@ export const AdminSetup = ({ onRegister, onCancel }) => {
           <p className="text-slate-400 font-medium mt-2">System Administrator Configuration</p>
         </div>
 
-        <div className="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-white/10">
+        <div className="bg-white rounded-4xl shadow-2xl overflow-hidden border border-white/10">
           <div className="p-8 md:p-10">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-slate-900">Admin Setup</h2>
@@ -157,7 +157,7 @@ export const AdminSetup = ({ onRegister, onCancel }) => {
                 <button 
                   type="submit"
                   disabled={loading}
-                  className="flex-[2] py-4 bg-teal-600 text-white font-bold rounded-2xl shadow-lg shadow-teal-600/20 hover:translate-y-[-2px] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70"
+                  className="grow py-4 bg-teal-600 text-white font-bold rounded-2xl shadow-lg shadow-teal-600/20 hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-70"
                 >
                   {loading ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
