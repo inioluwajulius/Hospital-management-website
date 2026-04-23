@@ -55,30 +55,30 @@ function App() {
         {/* ========== ADMIN ROUTES ========== */}
         <Route element={<DashboardLayout />}>
           {/* Doctor Registration (by admin) */}
-          <Route path="/admin/register-doctor" element={<ProtectedRoute requiredRole="ADMIN"><DoctorRegister /></ProtectedRoute>} />
+          <Route path="/admin/register-doctor" element={<ProtectedRoute requiredRole="admin"><DoctorRegister /></ProtectedRoute>} />
           
           {/* Admin Management Pages */}
-          <Route path="/admin/doctors" element={<ProtectedRoute requiredRole="ADMIN"><AdminDoctors /></ProtectedRoute>} />
-          <Route path="/admin/patients" element={<ProtectedRoute requiredRole="ADMIN"><AdminPatients /></ProtectedRoute>} />
-          <Route path="/admin/pending-approvals" element={<ProtectedRoute requiredRole="ADMIN"><AdminPendingDoctors /></ProtectedRoute>} />
-          <Route path="/admin/audit-logs" element={<ProtectedRoute requiredRole="ADMIN"><AuditLogs /></ProtectedRoute>} />
-          <Route path="/admin/settings" element={<ProtectedRoute requiredRole="ADMIN"><Settings /></ProtectedRoute>} />
+          <Route path="/admin/doctors" element={<ProtectedRoute requiredRole="admin"><AdminDoctors /></ProtectedRoute>} />
+          <Route path="/admin/patients" element={<ProtectedRoute requiredRole="admin"><AdminPatients /></ProtectedRoute>} />
+          <Route path="/admin/pending-approvals" element={<ProtectedRoute requiredRole="admin"><AdminPendingDoctors /></ProtectedRoute>} />
+          <Route path="/admin/audit-logs" element={<ProtectedRoute requiredRole="admin"><AuditLogs /></ProtectedRoute>} />
+          <Route path="/admin/settings" element={<ProtectedRoute requiredRole="admin"><Settings /></ProtectedRoute>} />
         </Route>
 
         {/* ========== DOCTOR ROUTES ========== */}
         <Route element={<DashboardLayout />}>
-          <Route path="/doctor/dashboard" element={<ProtectedRoute requiredRole="DOCTOR"><DoctorDashboard /></ProtectedRoute>} />
-          <Route path="/doctor/appointments" element={<ProtectedRoute requiredRole="DOCTOR"><DoctorAppointments /></ProtectedRoute>} />
-          <Route path="/doctor/prescriptions" element={<ProtectedRoute requiredRole="DOCTOR"><DoctorPrescriptions /></ProtectedRoute>} />
-          <Route path="/doctor/medical-records" element={<ProtectedRoute requiredRole="DOCTOR"><DoctorMedicalRecords /></ProtectedRoute>} />
-          <Route path="/doctor/lab-tests" element={<ProtectedRoute requiredRole="DOCTOR"><DoctorLabTest /></ProtectedRoute>} />
-          <Route path="/doctor/radiology" element={<ProtectedRoute requiredRole="DOCTOR"><DoctorRadiology /></ProtectedRoute>} />
+          <Route path="/doctor/dashboard" element={<ProtectedRoute requiredRole="doctor"><DoctorDashboard /></ProtectedRoute>} />
+          <Route path="/doctor/appointments" element={<ProtectedRoute requiredRole="doctor"><DoctorAppointments /></ProtectedRoute>} />
+          <Route path="/doctor/prescriptions" element={<ProtectedRoute requiredRole="doctor"><DoctorPrescriptions /></ProtectedRoute>} />
+          <Route path="/doctor/medical-records" element={<ProtectedRoute requiredRole="doctor"><DoctorMedicalRecords /></ProtectedRoute>} />
+          <Route path="/doctor/lab-tests" element={<ProtectedRoute requiredRole="doctor"><DoctorLabTest /></ProtectedRoute>} />
+          <Route path="/doctor/radiology" element={<ProtectedRoute requiredRole="doctor"><DoctorRadiology /></ProtectedRoute>} />
         </Route>
 
         {/* ========== PATIENT ROUTES ========== */}
         <Route element={<DashboardLayout />}>
-          <Route path="/patient/billing" element={<ProtectedRoute requiredRole="PATIENT"><PatientBilling /></ProtectedRoute>} />
-          <Route path="/patient/pharmacy" element={<ProtectedRoute requiredRole="PATIENT"><PatientPharmacy /></ProtectedRoute>} />
+          <Route path="/patient/billing" element={<ProtectedRoute requiredRole="patient"><PatientBilling /></ProtectedRoute>} />
+          <Route path="/patient/pharmacy" element={<ProtectedRoute requiredRole="patient"><PatientPharmacy /></ProtectedRoute>} />
         </Route>
 
         {/* 404 Fallback */}
