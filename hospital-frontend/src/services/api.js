@@ -1,7 +1,26 @@
 import axios from "axios";
 
+// Determine base URL based on environment
+const getBaseURL = () => {
+    // In production (Vercel), use relative URLs
+    if (import.meta.env.PROD) {
+        return "/api/v1";
+    }
+    // In development, use localhost
+    return import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api/v1";
+};
+
+const getBaseURLLegacy = () => {
+    // In production (Vercel), use relative URLs
+    if (import.meta.env.PROD) {
+        return "/api";
+    }
+    // In development, use localhost
+    return import.meta.env.VITE_API_BASE_URL_LEGACY || "http://localhost:5000/api";
+};
+
 const API = axios.create({
-    baseURL: "http://localhost:5000/api/v1", // API v1 endpoints
+    baseURL: getBaseURL(), // API v1 endpoints
     headers: {
         "Content-Type": "application/json",
     },
@@ -9,7 +28,7 @@ const API = axios.create({
 
 // Fallback API for backward compatibility
 const API_LEGACY = axios.create({
-    baseURL: "http://localhost:5000/api", // Legacy endpoints
+    baseURL: getBaseURLLegacy(), // Legacy endpoints
     headers: {
         "Content-Type": "application/json",
     },
