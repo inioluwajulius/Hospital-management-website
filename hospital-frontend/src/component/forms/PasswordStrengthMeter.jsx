@@ -16,14 +16,14 @@ const PasswordStrengthMeter = ({ strength = 0, password = '' }) => {
 
     // Color and styling based on strength
     const strengthConfig = {
-        0: { color: 'from-red-500 to-red-600', label: 'Weak', width: 'w-1/5' },
-        1: { color: 'from-orange-500 to-orange-600', label: 'Fair', width: 'w-2/5' },
-        2: { color: 'from-amber-500 to-amber-600', label: 'Good', width: 'w-3/5' },
-        3: { color: 'from-green-500 to-green-600', label: 'Strong', width: 'w-4/5' },
-        4: { color: 'from-emerald-500 to-emerald-600', label: 'Very Strong', width: 'w-full' },
+        0: { gradient: 'linear-gradient(to right, #ef4444, #dc2626)', label: 'Weak', width: 'w-1/5' },
+        1: { gradient: 'linear-gradient(to right, #f97316, #ea580c)', label: 'Fair', width: 'w-2/5' },
+        2: { gradient: 'linear-gradient(to right, #eab308, #ca8a04)', label: 'Good', width: 'w-3/5' },
+        3: { gradient: 'linear-gradient(to right, #22c55e, #16a34a)', label: 'Strong', width: 'w-4/5' },
+        4: { gradient: 'linear-gradient(to right, #10b981, #059669)', label: 'Very Strong', width: 'w-full' },
     };
 
-    const config = strengthConfig[strength];
+    const config = strengthConfig[strength] || strengthConfig[0];
 
     const requirements = [
         {
@@ -67,10 +67,12 @@ const PasswordStrengthMeter = ({ strength = 0, password = '' }) => {
 
                 <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
                     <div
-                        className={cn(
-                            `h-full bg-gradient-to-r ${config.color} transition-all duration-500`,
-                            config.width,
-                        )}
+                        style={{
+                            height: '100%',
+                            background: config.gradient,
+                            transition: 'width 500ms ease-in-out',
+                        }}
+                        className={cn('rounded-full', config.width)}
                     />
                 </div>
             </div>
