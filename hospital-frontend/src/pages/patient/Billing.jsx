@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../services/api';
 import { cn } from '../../lib/utils';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'motion';
 import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 const Billing = ({ showNotification } = {}) => {

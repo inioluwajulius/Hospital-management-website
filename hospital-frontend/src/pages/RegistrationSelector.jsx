@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion as Motion } from 'motion/react';
+import { motion as Motion } from 'motion';
 import { useNavigate } from 'react-router-dom';
 import { User, Stethoscope, ArrowRight } from 'lucide-react';
 import BrandLogo from '../component/BrandLogo';

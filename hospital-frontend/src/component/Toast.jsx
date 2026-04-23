@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'motion';
 import { CheckCircle, AlertCircle, Info, X } from 'lucide-react';
 
 const toastVariants = {

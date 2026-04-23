@@ -2,7 +2,7 @@
   "hash": "de387966",
   "configHash": "a5ead9b1",
   "lockfileHash": "1bba867f",
-  "browserHash": "2348cf0e",
+  "browserHash": "92025379",
   "optimized": {
     "axios": {
       "src": "../../node_modules/axios/index.js",
@@ -28,22 +28,28 @@
       "fileHash": "6eb1b3aa",
       "needsInterop": false
     },
+    "motion": {
+      "src": "../../node_modules/motion/dist/es/motion/lib/index.mjs",
+      "file": "motion.js",
+      "fileHash": "270fcd5f",
+      "needsInterop": false
+    },
     "motion/react": {
       "src": "../../node_modules/motion/dist/es/motion/lib/react.mjs",
       "file": "motion_react.js",
-      "fileHash": "2665f4c9",
+      "fileHash": "d49169f8",
       "needsInterop": false
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "b1d13def",
+      "fileHash": "bccd858e",
       "needsInterop": true
     },
     "react-router-dom": {
       "src": "../../node_modules/react-router-dom/dist/index.mjs",
       "file": "react-router-dom.js",
-      "fileHash": "7c16fcdf",
+      "fileHash": "5fb0fe43",
       "needsInterop": false
     },
     "react": {
@@ -61,7 +67,7 @@
     "recharts": {
       "src": "../../node_modules/recharts/es6/index.js",
       "file": "recharts.js",
-      "fileHash": "31985b65",
+      "fileHash": "9c7b2463",
       "needsInterop": false
     },
     "tailwind-merge": {
@@ -76,8 +82,12 @@
       "file": "chunk-BoAXSpZd.js",
       "isDynamicEntry": false
     },
-    "react-dom-BjPBJlww": {
-      "file": "react-dom-BjPBJlww.js",
+    "index-legacy-DbPa7ksN": {
+      "file": "index-legacy-DbPa7ksN.js",
+      "isDynamicEntry": false
+    },
+    "react-dom-POQGi4tS": {
+      "file": "react-dom-POQGi4tS.js",
       "isDynamicEntry": false
     }
   }

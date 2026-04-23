@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LogIn, Mail, Lock, AlertCircle, Loader2, Eye, EyeOff } from 'lucide-react';
-import { motion as Motion } from 'motion/react';
+import { motion as Motion } from 'motion';
 import { useParams } from 'react-router-dom';
 import { loginUser } from '../../services/api';
 import BrandLogo from '../../component/BrandLogo';

@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../services/api';
 import { cn } from '../../lib/utils';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'motion';
 
 const Radiology = ({ showNotification } = {}) => {
   const [exams, setExams] = useState([]);
