@@ -148,14 +148,10 @@ export const deleteMedicalRecord = (id) => API_LEGACY.delete(`/medical-records/$
 export const deleteLabTest = (id) => API_LEGACY.delete(`/lab/${id}`);
 export const deleteDrug = (id) => API_LEGACY.delete(`/drugs/${id}`);
 export const deleteRadiologyExam = (id) => API_LEGACY.delete(`/radiology/${id}`);
+export const deleteInvoice = (id) => API_LEGACY.delete(`/billing/${id}`);
 
 // Export API instances for direct use if needed
 export { API, API_LEGACY };
-
-// Export api as default instance for backward compatibility
-// This allows components to use: import { api } from 'services/api' and api.get(), api.post(), etc.
-export const api = API;
-export const deleteInvoice = (id) => API_LEGACY.delete(`/billing/${id}`);
 
 // Create an api object with all methods for convenience
 export const api = {
