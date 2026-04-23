@@ -148,6 +148,9 @@ export const deleteMedicalRecord = (id) => API_LEGACY.delete(`/medical-records/$
 export const deleteLabTest = (id) => API_LEGACY.delete(`/lab/${id}`);
 export const deleteDrug = (id) => API_LEGACY.delete(`/drugs/${id}`);
 export const deleteRadiologyExam = (id) => API_LEGACY.delete(`/radiology/${id}`);
+
+// Export API instances for direct use if needed
+export { API, API_LEGACY };
 export const deleteInvoice = (id) => API_LEGACY.delete(`/billing/${id}`);
 
 // Create an api object with all methods for convenience

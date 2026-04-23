@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { LogIn, Mail, Lock, AlertCircle, Loader2, Eye, EyeOff } from 'lucide-react';
 import { motion as Motion } from 'motion/react';
 import { useParams } from 'react-router-dom';
-import { api } from '../../services/api';
+import { loginUser } from '../../services/api';
 import BrandLogo from '../../component/BrandLogo';
 import { cn } from '../../lib/utils';
 
@@ -37,18 +37,19 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await api.post('/auth/login', formData);
+      const response = await loginUser(formData);
       localStorage.setItem('token', response.data.token);
       const user = response.data.user;
       localStorage.setItem('user', JSON.stringify(user));
       
-      // Redirect based on user role
+      // Redirect based on user role (normalize to lowercase for comparison)
       let redirectPath = '/auth/login/patient'; // default fallback
-      if (user?.role === 'ADMIN') {
+      const userRole = user?.role?.toLowerCase() || '';
+      if (userRole === 'admin') {
         redirectPath = '/admin/doctors';
-      } else if (user?.role === 'DOCTOR') {
+      } else if (userRole === 'doctor') {
         redirectPath = '/doctor/dashboard';
-      } else if (user?.role === 'PATIENT') {
+      } else if (userRole === 'patient') {
         redirectPath = '/patient/billing';
       }
       
