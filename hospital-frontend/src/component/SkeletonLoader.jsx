@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion';
+import { motion } from 'framer-motion';
 
 export const Skeleton = ({ className = '', width = 'w-full', height = 'h-4' }) => (
   <motion.div

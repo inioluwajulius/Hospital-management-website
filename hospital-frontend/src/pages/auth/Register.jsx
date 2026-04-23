@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { UserPlus, Loader2, Users, Stethoscope, CheckCircle2 } from 'lucide-react';
-import { motion as Motion, AnimatePresence } from 'motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import { api } from '../../services/api';
 import BrandLogo from '../../component/BrandLogo';

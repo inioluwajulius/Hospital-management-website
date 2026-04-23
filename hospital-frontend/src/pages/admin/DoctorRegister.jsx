@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { UserPlus, Loader2, Stethoscope, Award, Briefcase } from 'lucide-react';
-import { motion as Motion, AnimatePresence } from 'motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import BrandLogo from '../../component/BrandLogo';
 import { cn } from '../../lib/utils';

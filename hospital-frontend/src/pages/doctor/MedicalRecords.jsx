@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import { api } from '../../services/api';
 import { cn } from '../../lib/utils';
-import { motion, AnimatePresence } from 'motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const MedicalRecords = ({ showNotification } = {}) => {
   const [records, setRecords] = useState([]);

@@ -26,7 +26,7 @@ import {
 import { api } from '../../services/api';
 import { cn } from '../../lib/utils';
 import { format, addDays, startOfWeek } from 'date-fns';
-import { motion, AnimatePresence } from 'motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Appointments = ({ showNotification } = {}) => {
   const [appointments, setAppointments] = useState([]);

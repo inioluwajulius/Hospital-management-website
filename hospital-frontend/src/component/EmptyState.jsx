@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion';
+import { motion } from 'framer-motion';
 
 export const EmptyState = ({ 
   icon: Icon, 
