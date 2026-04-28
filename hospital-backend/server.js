@@ -33,6 +33,7 @@ app.get('/api/health', (req, res) => {
 const authRoutesV1 = require('./routes/api/v1/authRoutes');
 const doctorRoutesV1 = require('./routes/api/v1/doctorRoutes');
 const patientRoutesV1 = require('./routes/api/v1/patientRoutes');
+const patientRoutes = require('./routes/patientRoutes');
 const adminRoutesV1 = require('./routes/api/v1/adminRoutes');
 
 // Legacy Routes (for backward compatibility)
@@ -50,6 +51,8 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/api/v1/auth', authRoutesV1);
 app.use('/api/v1/doctors', doctorRoutesV1);
 app.use('/api/v1/patients', patientRoutesV1);
+// Legacy patients route for older clients/tests
+app.use('/api/patients', patientRoutes);
 app.use('/api/v1/admin', adminRoutesV1);
 
 // Legacy routes - backward compatibility
