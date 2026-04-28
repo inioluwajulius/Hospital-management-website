@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   User as UserIcon, 
   Bell, 
@@ -30,18 +30,15 @@ const SettingItem = ({ icon: Icon, title, description, badge }) => (
 );
 
 export const Settings = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const userStr = localStorage.getItem('user');
-    if (userStr) {
-      try {
-        setUser(JSON.parse(userStr));
-      } catch (error) {
-        console.error('Failed to parse user:', error);
-      }
+  // Lazily initialize `user` from localStorage to avoid setState in effect
+  const [user] = useState(() => {
+    try {
+      const userStr = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
+      return userStr ? JSON.parse(userStr) : null;
+    } catch {
+      return null;
     }
-  }, []);
+  });
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">

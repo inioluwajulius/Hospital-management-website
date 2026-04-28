@@ -16,7 +16,7 @@ export const useAuth = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading] = useState(false);
 
     const setToken = useCallback((token) => {
         if (token) {
