@@ -10,7 +10,7 @@ const validateEmail = (email) => {
 
 const validatePhone = (phone) => {
     // Accept various phone formats
-    const phoneRegex = /^[\d\s\-\+\(\)]{7,}$/;
+    const phoneRegex = /^[\d\s-+()]{7,}$/;
     return phoneRegex.test(phone);
 };
 

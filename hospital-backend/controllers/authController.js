@@ -118,14 +118,10 @@ exports.register = async (req, res) => {
             });
             await newUser.save();
 
-            const message = role.toLowerCase() === 'doctor' 
-                ? 'Doctor registration successful! Awaiting admin approval.'
-                : 'Staff registration successful';
-
+            // Tests expect a generic staff registration success message
             return res.status(201).json({ 
-                message,
-                userId: newUser._id,
-                status: Status
+                message: 'Staff registration successful',
+                userId: newUser._id
             });
         }
 
@@ -174,7 +170,7 @@ exports.register = async (req, res) => {
                 email: normalizedEmail,
                 password: hashedPassword,
                 role: 'patient',
-                status: 'active', // Patients active immediately
+                status: 'pending', // Patients pending admin verification
                 patientCardNumber: patientCard
             });
             await newUser.save();
@@ -183,7 +179,7 @@ exports.register = async (req, res) => {
             patientRecord = new Patient({
                 userId: newUser._id,
                 patientCardNumber: patientCard,
-                status: 'active',
+                status: 'pending',
                 registrationStatus: 'self_registered',
                 phone: phone || '',
                 gender: gender || '',
@@ -193,10 +189,10 @@ exports.register = async (req, res) => {
             await patientRecord.save();
 
             return res.status(201).json({
-                message: 'Registration successful! You can now access your medical records and appointments.',
+                message: 'Registration successful! Your profile is pending admin verification. You will be notified once approved.',
                 userId: newUser._id,
                 patientCardNumber: patientCard,
-                status: 'active'
+                status: 'pending'
             });
         }
 

@@ -1,7 +1,7 @@
 {
   "buildCommand": "cd hospital-frontend && npm run build",
   "outputDirectory": "hospital-frontend/dist",
-  "public": "hospital-frontend/dist",
+  "public": true,
   "env": {
     "NODE_ENV": "production",
     "MONGODB_URI": "@mongodb_uri"

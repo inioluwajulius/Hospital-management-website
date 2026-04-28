@@ -1,3 +1,6 @@
 const { app } = require('../hospital-backend/server');
 
-module.exports = app;
+// Export a handler function for serverless platforms (Vercel expects a function)
+module.exports = (req, res) => {
+	return app(req, res);
+};

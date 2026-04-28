@@ -22,7 +22,6 @@ export const FormInput = React.forwardRef((
         helpText,
         icon: Icon,
         autoComplete,
-        className,
         inputClassName,
     },
     ref,

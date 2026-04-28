@@ -3753,7 +3753,7 @@ var getColorType = (v) => colorTypes.find((type) => type.test(v));
 function asRGBA(color) {
 	const type = getColorType(color);
 	warning(Boolean(type), `'${color}' is not an animatable color. Use the equivalent color code instead.`);
-	if (!Boolean(type)) return false;
+	if (!type) return false;
 	let model = type.parse(color);
 	if (type === hsla) model = hslaToRgba(model);
 	return model;
@@ -4491,7 +4491,7 @@ var MainThreadAnimation = class extends BaseAnimation {
 			if (!iterationProgress && progress >= 1) iterationProgress = 1;
 			iterationProgress === 1 && currentIteration--;
 			currentIteration = Math.min(currentIteration, repeat + 1);
-			if (Boolean(currentIteration % 2)) {
+			if (currentIteration % 2) {
 				if (repeatType === "reverse") {
 					iterationProgress = 1 - iterationProgress;
 					if (repeatDelay) iterationProgress -= repeatDelay / resolvedDuration;
@@ -7566,7 +7566,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
 				this.forceRelativeParentToResolveTarget();
 				calcRelativeBox(this.target, this.relativeTarget, this.relativeParent.target);
 			} else if (this.targetDelta) {
-				if (Boolean(this.resumingFrom)) this.target = this.applyTransform(this.layout.layoutBox);
+				if (this.resumingFrom) this.target = this.applyTransform(this.layout.layoutBox);
 				else copyBoxInto(this.target, this.layout.layoutBox);
 				applyBoxDelta(this.target, this.targetDelta);
 			} else

@@ -19,7 +19,7 @@ import {
  * @param {object} validationRules - Custom validation rules for fields
  * @returns {object} - Validation state and handlers
  */
-export const useValidation = (validationRules = {}) => {
+export const useValidation = (_validationRules = {}) => {
     const [fieldErrors, setFieldErrors] = useState({});
     const [validationState, setValidationState] = useState({});
 

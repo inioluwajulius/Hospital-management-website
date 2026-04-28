@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { 
   Shield, 
   Search, 
@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 export const AuditLogs = ({ showNotification }) => {
-  const [logs, setLogs] = useState([
+  const [logs] = useState([
     {
       id: '1',
       timestamp: '2024-04-10 14:32:15',
@@ -69,7 +69,7 @@ export const AuditLogs = ({ showNotification }) => {
       details: 'Paracetamol stock adjusted'
     }
   ]);
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('all');
 

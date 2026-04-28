@@ -122,13 +122,15 @@ const MedicalRecords = ({ showNotification } = {}) => {
   };
 
   const filteredRecords = records.filter(record => {
-    const matchesSearch = 
+    const matchesSearch =
       record.patientName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       record.chiefComplaint?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       record.diagnosis?.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    return !selectedPatient || record.patientId === selectedPatient;
-  }).filter(r => matchesSearch);
+
+    const matchesPatient = !selectedPatient || record.patientId === selectedPatient;
+
+    return matchesPatient && matchesSearch;
+  });
 
   const patientRecords = selectedPatient 
     ? records.filter(r => r.patientId === selectedPatient)

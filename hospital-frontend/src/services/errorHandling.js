@@ -1,3 +1,4 @@
+/* global process */
 import { VALIDATION_ERRORS } from '../constants/validation.constants.js';
 
 /**
@@ -145,7 +146,8 @@ class ErrorHandlingService {
      * @returns {void}
      */
     static logError(error, context = '') {
-        if (process.env.NODE_ENV === 'development') {
+        if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+            // eslint-disable-next-line no-console
             console.error(`[${context}]`, error);
         }
     }
