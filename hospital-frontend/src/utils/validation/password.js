@@ -52,13 +52,29 @@ export const hasSpecialChar = (password) => {
  * @returns {object} - { minLength, uppercase, lowercase, number, special, isStrong }
  */
 export const getPasswordChecks = (password) => {
+    const minLength = hasMinLength(password);
+    const uppercase = hasUppercase(password);
+    const lowercase = hasLowercase(password);
+    const number = hasNumber(password);
+    const special = hasSpecialChar(password);
+
+    // Determine "isStrong" based on requirements without calling back into
+    // the higher-level validators to avoid recursion.
+    const isStrong = (
+        minLength &&
+        (!PASSWORD_REQUIREMENTS.REQUIRES_UPPERCASE || uppercase) &&
+        (!PASSWORD_REQUIREMENTS.REQUIRES_LOWERCASE || lowercase) &&
+        (!PASSWORD_REQUIREMENTS.REQUIRES_NUMBER || number) &&
+        (!PASSWORD_REQUIREMENTS.REQUIRES_SPECIAL || special)
+    );
+
     return {
-        minLength: hasMinLength(password),
-        uppercase: hasUppercase(password),
-        lowercase: hasLowercase(password),
-        number: hasNumber(password),
-        special: hasSpecialChar(password),
-        isStrong: isPasswordStrong(password),
+        minLength,
+        uppercase,
+        lowercase,
+        number,
+        special,
+        isStrong,
     };
 };
 
@@ -162,13 +178,13 @@ export const validatePasswordMatch = (password, confirmPassword) => {
  */
 export const getPasswordStrength = (password) => {
     if (!password) return 0;
-
     const checks = getPasswordChecks(password);
-    const fulfillmentCount = Object.values(checks)
-        .filter((v) => v === true)
-        .length - 1; // Exclude isStrong boolean
+    // Count only the explicit check flags (minLength, uppercase, lowercase, number, special)
+    const keys = ['minLength', 'uppercase', 'lowercase', 'number', 'special'];
+    const fulfillmentCount = keys.reduce((acc, k) => acc + (checks[k] ? 1 : 0), 0);
 
-    return Math.min(fulfillmentCount, 4);
+    // Map fulfillmentCount (0..5) to strength 0..4
+    return Math.min(Math.max(0, fulfillmentCount - 1), 4);
 };
 
 /**
