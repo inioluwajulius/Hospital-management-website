@@ -4,7 +4,7 @@
   "public": "hospital-frontend/dist",
   "env": {
     "NODE_ENV": "production",
-    "MONGODB_URI": "@mongodb_uri"
+    "MONGO_URI": "@mongodb_uri"
   },
   "functions": {
     "api/index.js": {
