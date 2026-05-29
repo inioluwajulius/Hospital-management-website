@@ -248,4 +248,31 @@ describe('authController privacy', () => {
         expect(res.status).toHaveBeenCalledWith(201);
         expect(res.json).toHaveBeenCalledWith({ message: 'Staff registration successful', userId: 'doctor-123' });
     });
+
+    it('allows doctor registration without years of experience', async () => {
+        const req = {
+            body: {
+                name: 'Dr. Smith',
+                email: 'doctor@hospital.com',
+                password: 'DoctorPass#123',
+                userType: 'staff',
+                role: 'DOCTOR'
+            }
+        };
+        const res = createMockResponse();
+
+        User.findOne = jest.fn().mockResolvedValue(null);
+        const mockUserInstance = {
+            _id: 'doctor-456',
+            save: jest.fn().mockResolvedValue(true)
+        };
+        User.mockImplementation(() => mockUserInstance);
+        bcrypt.hash = jest.fn().mockResolvedValue('hashed-password-456');
+
+        await register(req, res);
+
+        expect(mockUserInstance.save).toHaveBeenCalled();
+        expect(res.status).toHaveBeenCalledWith(201);
+        expect(res.json).toHaveBeenCalledWith({ message: 'Staff registration successful', userId: 'doctor-456' });
+    });
 });

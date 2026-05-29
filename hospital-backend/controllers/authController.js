@@ -102,6 +102,15 @@ exports.register = async (req, res) => {
                 return res.status(400).json({ message: 'Valid role required for staff' });
             }
 
+            const parsedYearsOfExperience =
+                yearsOfExperience === undefined || yearsOfExperience === null || yearsOfExperience === ''
+                    ? undefined
+                    : Number.parseInt(yearsOfExperience, 10);
+
+            if (role.toLowerCase() === 'doctor' && parsedYearsOfExperience !== undefined && Number.isNaN(parsedYearsOfExperience)) {
+                return res.status(400).json({ message: 'Years of experience must be a valid number' });
+            }
+
             // Doctors require admin approval, other staff are active immediately
             const Status = role.toLowerCase() === 'doctor' ? 'pending' : 'active';
 
@@ -114,7 +123,7 @@ exports.register = async (req, res) => {
                 // Doctor-specific fields
                 specialization: role.toLowerCase() === 'doctor' ? specialization : undefined,
                 licenseNumber: role.toLowerCase() === 'doctor' ? licenseNumber : undefined,
-                yearsOfExperience: role.toLowerCase() === 'doctor' ? parseInt(yearsOfExperience) : undefined,
+                yearsOfExperience: role.toLowerCase() === 'doctor' ? parsedYearsOfExperience : undefined,
             });
             await newUser.save();
 
