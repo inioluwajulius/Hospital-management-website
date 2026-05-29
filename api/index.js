@@ -1,6 +1,5 @@
 const { app } = require('../hospital-backend/server');
 
-// Export a handler function for serverless platforms (Vercel expects a function)
-module.exports = (req, res) => {
-	return app(req, res);
-};
+// Export the Express app as a handler function for Vercel serverless
+// Vercel automatically wraps the Express app with the serverless framework
+module.exports = app;
