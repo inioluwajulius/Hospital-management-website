@@ -18,6 +18,16 @@ export const useAuth = () => {
     const [message, setMessage] = useState('');
     const [isLoading] = useState(false);
 
+    const getRegistrationErrorMessage = useCallback((err) => {
+        const message = err?.response?.data?.message || 'Registration failed. Please try again.';
+
+        if (message === 'Email already exists') {
+            return 'An account already exists with this email address. Use a different email or log in instead.';
+        }
+
+        return message;
+    }, []);
+
     const setToken = useCallback((token) => {
         if (token) {
             localStorage.setItem('token', token);
@@ -53,13 +63,12 @@ export const useAuth = () => {
             setMessage(response.data?.message || 'Registration successful!');
             return response.data;
         } catch (err) {
-            const errorMessage = err?.response?.data?.message || 'Registration failed. Please try again.';
-            setError(errorMessage);
+            setError(getRegistrationErrorMessage(err));
             throw err;
         } finally {
             setIsSubmitting(false);
         }
-    }, []);
+    }, [getRegistrationErrorMessage]);
 
     /**
      * Login user
